@@ -1,0 +1,71 @@
+* 2.0 – Nov 2019
+
+- Updated Bootstrap to v4.3.1
+- Added NPM dependencies
+- Removed Bower
+- Updated jQuery to 3.4.1
+- Updated Font Awesome to v5
+- Improved Landing Page styles and updated to Bootstrap 4
+- Removed dependency on Modernizr
+- Migrated from JADE to PUG
+- Migrated from LESS to SASS (scss)
+- Bootstrap now @imported from NPM
+- Panel-Actions script rewritten as Card-Tools script
+- Reduced use of jQuery with more VanillaJS
+- Gulp updated to v4
+- New Gulp file with
+- Sourcemaps support
+- Production build
+- Production server preview
+- Formatted code (prettier)
+- Improved folder structure
+- Updated documentation
+
+* 1.4 – Aug 14 2015
+
+- Updated Bootstrap to 3.3.5
+- Updated jQuery to 2.1.4
+- Updated Fontawesome to 4.4.0
+- Added maps in modal demo
+
+* 1.3 – Aug 23 2014
+
+- Updated Bootstrap version 3.2.0
+- Fix FlotChart tooltip plugin
+- Fix smooth scroll on iOS
+- Added date column to datatable to show order
+- Added form wizard plugin
+- Added mail inbox page layout
+- Updated animations
+- Added duration option for animations
+
+* 1.2 – Jun 27 2014
+
+- Added Masked input
+- Added Panel refresh events
+- Added Chart refresh data
+- Added CSS3 animated Spinners
+- Added simple layout variants
+- Added Masonry fallback to inline grid
+- Fix Masonry columns on FF
+- Documentation updated
+
+* 1.1 – Jun 07 2014
+
+- Added SlimScroll plugin
+- Added Masonry Grid
+- Added frontend pages
+- Added Datatables
+- Added Portlets (jQuery UI+touch)
+- Added Google Maps
+- Added Full Calendar app
+- Update Charts loaded from json
+- Update Notify plugin
+- Update buttons styles
+- Update Font Awesome 4.1.0
+- Fix play animation module
+- Documentation updated
+
+* 1.0 – May 02 2014
+
+- Initial Release

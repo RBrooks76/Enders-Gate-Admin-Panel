@@ -1,0 +1,677 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>47Admin Docs</title><link rel="stylesheet" href="assets/styles.css"></head><body><div class="inf-header-wrapper"><header class="inf-header"><h1 class="title"><a href="http://geedmo.com/items/?name=47Admin">47Admin Docs</a></h1><div class="support"><a href="https://codecanyon.net/user/geedmo#contact" class="btn-support">Contact support</a></div></header></div><div class="inf-wrapper"><nav class="inf-menu"><ul><li><a href="#introduction">Introduction</a></li><li><a href="#structure">Structure</a></li><li><a href="#build">Build</a></li><li><a href="#usage">Usage</a></li><li><a href="#credits">Credits</a></li></ul><div class="inf-menu-meta"><span>By:</span><a href="https://twitter.com/geedmo">@geedmo</a><br><span>Created:</span><span>2019-11-01</span><br><span>Updated:</span><span>2019-11-11</span></div></nav><div class="inf-content"><div class="inf-item-header"><h1>47Admin<small>Bootstrap 4 Admin Template</small></h1><p>Thank you for purchasing 47Admin - Bootstrap 4 Admin Template.<br>If you have any question about this product and beyond the scope of this help file, please feel free to write us using the support button.</p><br><p><strong>Thanks so much!</strong></p></div><section class="inf-section"><article id="introduction"><h2 class="title">Introduction</h2><div class="content"><p>This item is a Bootstrap 4 skin designed to work with admin templates. Built on latest version of Twitter Bootstrap 4 with new features and customizable options. </p>
+<p>This document aims to explain the best way to work with the product and its components.</p>
+<p><strong>- <em>All the best and enjoy coding.</em></strong></p>
+<h4 id="getting-started-tips">Getting started tips</h4>
+<ul>
+<li>Do not start from scratch, use an existing asset and modify it to learn how it works.</li>
+<li>Explore the sources for ideas and sample code.</li>
+<li>Use Firebug or Chrome Developer Tools to find bugs on your website. Using one of those tools will help you to save time analyzing the site and finding elements structure, like classes, id or tags<ul>
+<li>Quick tip: open your site with Chrome, press F12 and go to console tab, reload your page and if something goes wrong you will see your page errors in red text.</li>
+</ul>
+</li>
+<li>In case of errors, someone might have seen it too, you can try a Google search for a quick fix.</li>
+</ul>
+<h4 id="starting-the-app">Starting the app</h4>
+<p>It&#39;s recommended to run this application using a server (Apache, IIS, xampp, etc) to serve the html files and perform necessary http request.<br>Anyway, this project doesn&#39;t need a server but some components will not work if the application is not running from a server.  </p>
+<h5 id="basic-server-setup-requires-nodejs">Basic server setup (requires nodejs)</h5>
+<p>This is simple solution for a basic server setup using nodejs that might help you. If you don&#39;t have installed nodejs take a look at the Build section to learn about it</p>
+<ul>
+<li><p>Install the http-server  (-g installs globally)  </p>
+<p><code>npm install http-server -g</code>  </p>
+</li>
+<li><p>Move to the root folder of the theme (where index.html is located) and run</p>
+<p><code>http-server . -a 127.0.0.1 -p 8080</code></p>
+</li>
+<li><p>If everything goes fine you can now access to the app at <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></p>
+</li>
+</ul>
+</div></article><article id="structure"><h2 class="title">Structure</h2><div class="content"><p>Before starting to customize the template, here is the project files organization structure:</p>
+<pre><code class="language-css">+---app
+|   +---css
+|   +---img
+|   +---js
+|   +---server
+|   +---vendor
++---master
+    +---img
+    +---js
+    |   +---custom
+    |   +---modules
+    |       +---charts
+    |       +---common
+    |       +---elements
+    |       +---forms
+    |       +---pages
+    |       +---tables
+    +---pug
+    |   +---views
+    |       +---charts
+    |       +---dashboard
+    |       +---elements
+    |       +---forms
+    |       +---pages
+    |       +---tables
+    |       +---_partials
+    +---sass
+    |   +---app
+    |   |   +---charts
+    |   |   +---common
+    |   |   +---elements
+    |   |   +---pages
+    |   |   +---forms
+    |   |   +---layout
+    |   |   +---maps
+    |   |   +---tables
+    |   |   +---app.scss
+    |   |   +---bootstrap.scss
+    |   |   +---landing.scss
+    +---server
+</code></pre>
+<h4 id="main-folders-explanation">Main folders explanation</h4>
+<p><strong>app/</strong></p>
+<p>This folder contains all assets necessary to run the application (images, etc) and compiled source files. This files are ready to deploy on your server. This folder is generated using Gulp.</p>
+<ul>
+<li>css/ This folder contains the compiled stylesheets.</li>
+<li>js/ This folder contains only the final build of javascript files. </li>
+<li>vendor/ This folder contains vendor assets that are included in the html file. Files are placed here using Gulp. </li>
+<li>server/ This folder contains server side files used for demonstration. In a real app your server should listen to a specific address and return the content of this files (and/or others) with specific information.</li>
+</ul>
+<p><strong>master</strong></p>
+<p>This folder contains the source files organized in subfolder for easy reference. Each folder contains PUG(ex JADE), SCSS and JS files.  As you can see, the subfolder structure is similar to the menu structured presented in the template.</p>
+<p><strong>master/sass</strong></p>
+<p>The sass folder contains actually SCSS files and the main files here are:</p>
+<ul>
+<li><p><strong>app.scss</strong>: where the entire admin application is imported</p>
+</li>
+<li><p><strong>bootstrap.scss</strong>: here is imported the bootstrap framework from node_modules</p>
+</li>
+<li><p><strong>landing.scss</strong>: the styles used only for the landing page provided</p>
+</li>
+</ul>
+<p><strong>master/node_modules</strong></p>
+<p>This folder contains dependencies for installed using npm</p>
+<p><strong>app/vendor</strong></p>
+<p>This folder contains vendor assets, it&#39;s populated with the list of files declared in the file <strong>master/vendor.json</strong>. This file is used to filter only what is necessary for the template avoiding to copy any other extra file that comes with the package installation.</p>
+</div></article><article id="build"><h2 class="title">Build</h2><div class="content"><blockquote>
+<p><strong>Important</strong> You only need to follow this instructions if you plan to use build tools.</p>
+</blockquote>
+<h4 id="build-tools">Build Tools</h4>
+<p>Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications.</p>
+<p>Gulp is a task manager, you can define different tasks to run certain commands. Those commands does the compilation job for precompiled languages (PUG/SCSS), and concatenates the JS files.</p>
+<p>The package includes under the <strong>master/</strong> folder the file gulpfile.js and package.json to install the required components in order to compile the source files.  </p>
+<h4 id="installing-tools">Installing tools</h4>
+<p>The following steps are intended to be an orientation guide, if you are not experienced with this you will need to learn a bit more about it from Google :)</p>
+<ul>
+<li>To install node and npm, go to <a href="http://nodejs.org/" title="http://nodejs.org/">http://nodejs.org/</a></li>
+<li>Download and install GIT for your platform from <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a></li>
+</ul>
+<p>Once you have all tools installed</p>
+<ul>
+<li><p>Open a console/terminal and run <code>npm install -g gulp</code> to install Gulp</p>
+</li>
+<li><p>Move to the package master/ folder, there run the following commands</p>
+<ul>
+<li>This command will install all node dependencies.
+<code>npm install</code>. </li>
+</ul>
+</li>
+<li><p>Finally run <code>gulp serve</code> to start the task manager.</p>
+</li>
+</ul>
+<p>If everything goes fine, you should see messages in your terminal telling you that all the task are done ok. Gulp will watch for file changes to compile them automatically and will open the application using your favorite browser.</p>
+<h5 id="gulp-customization">Gulp customization</h5>
+<p>If you need to change the configuration used by Gulp, mainly paths or plugin options, you can do that by editing the file <code>gulpfile.js</code>  </p>
+<h5 id="main-gulp-tasks">Main Gulp tasks</h5>
+<p>Gulp tasks must be executed under folder <strong>master</strong></p>
+<p><code>&gt; gulp serve</code></p>
+<p>This command will run the build task and start the built-in server using <a href="http://www.browsersync.io/">BrowserSync</a></p>
+<p><code>&gt; gulp build</code></p>
+<p>Use this command to build the application for development. All compiled files will be placed under &#39;app&#39; folder. </p>
+<p><code>&gt; gulp serve --prod</code></p>
+<p>The &#39;--prod&#39; flag indicates the task is executed for production. In this case gulp will compile and start a server with production ready files, meaning, all files will be compressed including vendor assets. Note that the built-in server is not recommended to be used for production environments. </p>
+<p><code>&gt; gulp build --prod</code></p>
+<p>Use this command to build the application for production. All compiled files will be placed under &#39;dist&#39; folder. </p>
+<p><code>&gt; gulp serve --sourcemaps</code></p>
+<p>This modifier will create source-maps when compiling assets. Ideally used with Gulp serve for development.</p>
+<p><code>&gt; gulp clean</code></p>
+<p>Delete build files</p>
+<blockquote>
+<p><strong>Be careful</strong> the clean task will delete all files under &#39;app&#39; folder without any confirmation or undo option.</p>
+</blockquote>
+</div></article><article id="usage"><h2 class="title">Usage</h2><div class="content"><p>This template was developed to use Gulp as the main tool of the development workflow.<br>Gulp provides plugins to serve the app, perform automatic browser reloading after any change and build of assets for distribution. It also allows to work with agile languages like PUG/SCSS/etc and modular JavaScript (concatenated).   </p>
+<p>Beyond that, if you are not convinced about build tools, the current setup has a basic support to work with static files (html, css) without needing build tools.  </p>
+<p><strong>We encourage you to use build tools, the benefits greatly outweigh the costs of learning.</strong></p>
+<h4 id="static-files-organization-no-gulp">Static files organization (no Gulp)</h4>
+<p>The most simple usage is by pointing the server root the &#39;app&#39; folder of the package. Note that the index.html  included in the root of the project is just a redirect to dashboard.html. </p>
+<p>This allows to work directly with raw files like CSS, HTML and JS without worrying about build tools.<br>Now, to edit files, focus on the following locations:  </p>
+<ul>
+<li>Styles are accessible in folder /app/css</li>
+<li>Markup is accessible in folder /app (raw html)</li>
+<li>Scripts are accessible in folder /app/js</li>
+</ul>
+<blockquote>
+<p><strong>Important</strong> if you change something on this folder and then switch to use Gulp, all previous changes may be lost because Gulp uses this folder as destination to place compiled files.</p>
+</blockquote>
+<h4 id="compiled-files-organization">Compiled files organization</h4>
+<p>As a quick reference, the current setup does the following compilations:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th align="center">Produces</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PUG</td>
+<td align="center">HTML</td>
+</tr>
+<tr>
+<td>SCSS</td>
+<td align="center">CSS</td>
+</tr>
+<tr>
+<td>Javascript</td>
+<td align="center">Javascript (concatenation)</td>
+</tr>
+</tbody></table>
+<h5 id="styles">Styles</h5>
+<p>For styles we use two files</p>
+<p>​    <strong>sass/bootstrap.scss</strong> This files will be compile to bootstrap.css with the framework rules modified to match the template styles.</p>
+<p>​    <strong>sass/app.scss</strong> This file contains template rules for different components and plugins. This file also @imports some files from Bootstrap like variables and mixin to easy the development.</p>
+<h5 id="scripts">Scripts</h5>
+<p>All scripts are concatenated into one single file <strong>app.js</strong> 
+The order of concatenation is the following:</p>
+<pre><code class="language-javascript">app.init.js
+modules/**/*.js
+custom/**/*.js</code></pre>
+<h4 id="layout">Layout</h4>
+<p>One of the main benefits of using PUG is that we can use partials templates to write common parts of a page only once and reuse such template many times. This happens also for layout, similar to templates but allows to define &#39;blocks&#39; where we will add later markup for a specific page.</p>
+<p>The following picture describes the main pieces of the layout</p>
+<p><img src="layout.jpg" alt="layout"></p>
+<p>The following markup representation is in fact divided into views but this code will give a good perspective of the final organization after the app is rendered:</p>
+<pre><code class="language-html">doctype html
+html(lang=&quot;en&quot;)
+
+    head
+
+        meta(charset=&#39;utf-8&#39;)
+        meta(name=&#39;viewport&#39;, content=&#39;width=device-width, initial-scale=1, maximum-scale=1&#39;)
+
+        meta(name=&#39;description&#39;, content=&#39;Bootstrap Admin App&#39;)
+        meta(name=&#39;keywords&#39;, content=&#39;app, responsive, jquery, bootstrap, dashboard, admin&#39;)
+        link(rel=&#39;icon&#39; type=&#39;image/x-icon&#39; href=&#39;favicon.ico&#39;)
+
+        title 47Admin - Bootstrap Admin Theme
+
+        // =============== VENDOR STYLES ===============
+
+        // FONT AWESOME
+        link(rel=&#39;stylesheet&#39;, href=&#39;vendor/@fortawesome/fontawesome-free/css/brands.css&#39;)
+        link(rel=&#39;stylesheet&#39;, href=&#39;vendor/@fortawesome/fontawesome-free/css/regular.css&#39;)
+        link(rel=&#39;stylesheet&#39;, href=&#39;vendor/@fortawesome/fontawesome-free/css/solid.css&#39;)
+        link(rel=&#39;stylesheet&#39;, href=&#39;vendor/@fortawesome/fontawesome-free/css/fontawesome.css&#39;)
+        // ANIMATE.CSS
+        link(rel=&#39;stylesheet&#39;, href=&#39;vendor/animate.css/animate.css&#39;)
+
+        // =============== PAGE VENDOR STYLES ===============
+        block vendor_css
+            //- This block includes page vendor
+
+        // =============== BOOTSTRAP STYLES ===============
+
+        link(rel=&#39;stylesheet&#39;, href=&#39;css/bootstrap.css&#39;, id=&quot;bscss&quot;)
+
+        // =============== APP STYLES ===============
+
+        link(rel=&#39;stylesheet&#39;, href=&#39;css/app.css&#39;, id=&quot;maincss&quot;)
+
+    body
+
+        .wrapper
+            // top navbar
+            header.topnavbar-wrapper
+                include views/_partials/_top-navbar
+
+            // sidebar
+            aside.aside-container
+                include views/_partials/_sidebar
+
+            // offsidebar
+            aside.offsidebar.d-none
+                include views/_partials/_offsidebar
+
+            // Main section
+            section.section-container
+
+                // Page content
+                .content-wrapper
+
+                    block content
+
+        // =============== VENDOR SCRIPTS ===============
+
+        // STORAGE API
+        script(src=&#39;vendor/js-storage/js.storage.js&#39;)
+        // SCREENFULL
+        script(src=&#39;vendor/screenfull/dist/screenfull.js&#39;)
+        // i18next
+        script(src=&#39;vendor/i18next/i18next.js&#39;)
+        script(src=&#39;vendor/i18next-xhr-backend/i18nextXHRBackend.js&#39;)
+        //- JQUERY
+        script(src=&#39;vendor/jquery/dist/jquery.js&#39;)
+        //- BOOTSTRAP
+        script(src=&#39;vendor/popper.js/dist/umd/popper.js&#39;)
+        script(src=&#39;vendor/bootstrap/dist/js/bootstrap.js&#39;)
+
+
+        // =============== PAGE VENDOR SCRIPTS ===============
+        block vendor_js
+            //- This block includes page vendor
+
+        // =============== APP SCRIPTS ===============
+        script(src=&#39;js/app.js&#39;)
+</code></pre>
+<h5 id="behavior-classes">Behavior classes</h5>
+<p>As you can see in the index, there are some classes related to the sidebar that are used to change the layout behavior.<br>This classes are:</p>
+<table>
+<thead>
+<tr>
+<th>Classname</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.aside-collapsed</code></td>
+<td align="center">Makes the sidebar small showing only icons</td>
+</tr>
+<tr>
+<td><code>.aside-toggle</code></td>
+<td align="center">used for mobiles to hide-show the sidebar</td>
+</tr>
+<tr>
+<td><code>.offsidebar-open</code></td>
+<td align="center">used to toggle the offsidebar component (formally the right sidebar)</td>
+</tr>
+</tbody></table>
+<h5 id="sidebar">Sidebar</h5>
+<p>The file *<em>sidebar.json *</em>contains the sidebar menu items configuration for easy customization. Using PUG you need only to edit this file in order to change the sidebar items</p>
+<h4 id="vendor">Vendor</h4>
+<p>Vendor script dependencies are managed by npm. Just run npm install in folder master/ and all dependencies will be installed. </p>
+<p><strong>Vendor folder</strong></p>
+<p>To avoid unnecessary files that comes with each package there’s a Gulp task that will copy all files required by the template from the node_modules folder to the app/vendor folder.</p>
+<p>This files are listed in *<em>vendor.json *</em> which contains the paths of all files required.</p>
+<p><strong>Vendor Updates</strong></p>
+<p>To update vendor files via NPM you can edit the package.json file by adding the last version you want to download. Please note that each version of the template is developed and tested with the versions included, if you update plugins is not guaranteed they will work &quot;out of the box&quot;.</p>
+<h4 id="translation">Translation</h4>
+<p>The translation system uses i18next module</p>
+<p>This modules simplifies the translation system by loading translate references from a JSON file and replacing the content where the reference has been used.</p>
+<p> Examples </p>
+<pre><code>&lt;small data-localize=&quot;dashboard.WELCOME&quot;&gt;&lt;/small&gt;</code></pre><p>The JSON files with translation references are located in the folder <strong>app/i18n</strong> </p>
+<p>See also dashboard.html to find example on how to change the language manually</p>
+<h4 id="card-tools-aka-panel-actions">Card tools (aka panel actions)</h4>
+<p>Cards can perform different actions. Currently there are three actions triggered by clicking an icon in the panel heading. The example markup is like follows </p>
+<pre><code class="language-html">.card.card-default
+    .card-header.d-flex
+        .card-title Card title
+        .ml-auto.text-muted-light
+            .d-inline-block.mr-3(data-perform=&quot;card-collapse&quot;)
+                em.fa.fa-minus
+            .d-inline-block.mr-0(data-perform=&quot;card-dismiss&quot;)
+                em.fa.fa-times
+            .d-inline-block.mr-0(data-perform=&quot;card-refresh&quot; data-spinner=&quot;standard&quot;)
+                em.fas.fa-sync
+    .card-wrapper
+        .card-body</code></pre>
+<p>Note the importance of the <strong>data-attibutes</strong>, the .<strong>flexbox</strong> classes and the <strong>icon</strong> element.</p>
+<p>Available actions are:</p>
+<p>- <strong>Dismiss</strong>: With a click the card closes and remove itself. </p>
+<p>- <strong>Collapse</strong>: this actions allows to collapse the panel body. This action uses extra classes that are handled via Javascript . See <code>card-wrapper</code>class.</p>
+<p>- <strong>Refresh</strong>: This action simply triggers an event in the .card element that can be hooked by any other module to know when the user request a refresh (content reload).</p>
+<p><strong>To see how work card tool events</strong>, please check the file <strong>master\js\modules\elements\cards.js</strong></p>
+<p><strong>The spinner animation</strong> can be changed using the <strong>data-spinner</strong> attribute and the allowed values are the classes supported by the Whirl plugin used in the demo page.</p>
+<p>&quot;bar follow&quot;
+&quot;bar&quot;
+&quot;blade&quot;
+&quot;double-up&quot;
+&quot;duo&quot;
+&quot;helicopter&quot;
+&quot;line back-and-forth grow&quot;
+&quot;line back-and-forth&quot;
+&quot;line grow&quot;
+&quot;line&quot;
+&quot;ringed&quot;
+&quot;shadow oval left&quot;
+&quot;shadow oval&quot;
+&quot;shadow oval right&quot;
+&quot;shadow&quot;
+&quot;sphere horizontal&quot;
+&quot;sphere&quot;
+&quot;sphere vertical&quot;
+&quot;traditional&quot;</p>
+<h4 id="notifications">Notifications</h4>
+<p>The notification system is based  on the notify component from UIKIT. 
+There are two way to use it.</p>
+<p>- Using a trigger element (via click) like a button , anchor, etc.</p>
+<pre><code class="language-html">&lt;button
+        type=&quot;button&quot;
+        data-toggle=&quot;notify&quot;
+        data-message=&quot;Message ..&quot;
+        class=&quot;btn btn-default&quot;
+        &gt;
+    Button text
+&lt;/button&gt;</code></pre>
+<p><strong>data-toggle=&quot;notifiy&quot;</strong> is what identifies the element to be handled by the notify plugin
+<strong>data-message</strong>: the message you want to display. It accepts text or html.
+<strong>data-options</strong>: This is a string of options in json format. Learn more <a href="http://www.getuikit.com/docs/addons_notify.html">here</a></p>
+<p>- Or when the pages first loads</p>
+<pre><code class="language-html">&lt;div 
+     data-toggle=&quot;notify&quot;
+     data-onload data-message=&quot;...&quot;
+     data-options=&quot;{&quot;status&quot;:&quot;danger&quot;, &quot;pos&quot;:&quot;top-right&quot;}&quot;
+     class=&quot;d-none&quot;
+&gt;&lt;/div&gt;</code></pre>
+<p>Note the following</p>
+<p><strong>data-onload</strong>: When present, the alert box will be displayed automatically when page loads. No value required. 
+<strong>d-none</strong>: this class from bootstrap hides the element so its not displayed in the page.</p>
+<h4 id="charts">Charts</h4>
+<p>Chart system is based on the plugin <a href="http://www.flotcharts.org/">Flot Charts</a></p>
+<p>According to the type of chart you want to display, you must provide a set of values so the chart can display it. This set of values are usually stored in a database or a file in the server. </p>
+<p>Every time a page with a chart is loaded, the script <strong>flot-chart.js</strong> find the chart elements and request a content for that chart via AJAX POST, this script uses an object defined which does the ajax request, and after receive the data it inits the corresponding chart.</p>
+<p>This is an example markup of a chart</p>
+<pre><code class="language-html">&lt;div
+     style=&quot;height: 250px;&quot;
+     data-source=&quot;server/chart-data-donut.json&quot;
+     class=&quot;chart-area flot-chart&quot;
+&gt;&lt;/div&gt;</code></pre>
+<p> To load from a JSON file directly just put the URL to the json file in the data-source attribute like follows</p>
+<h4 id="full-calendar">Full Calendar</h4>
+<p>This item include the full calender plugin wrapped into a classic application to manage events. This app is intended to show how to work with the most common features that full calendar provides. You can find more on its website at <a href="http://arshaw.com/fullcalendar/docs/">http://arshaw.com/fullcalendar/docs/</a></p>
+<p>The full calendar app is contained in the js module <strong>calendar.js</strong> and the execution is in 3 steps.</p>
+<p>1- <strong>createDemoEvents</strong>() This function prepares the events data to be displayed when the calendar inits. You can wrap into this function a request to a source to get via ajax the stored events</p>
+<p>2- <strong>initExternalEvents()</strong> attaches all necessary events to the left panel to add, remove and drag/drop events into the calendar</p>
+<p>3- <strong>initCalendar()</strong> this function finally invokes the calendar plugin and displays the events loaded from the source. This function also contains the drop handler to know when an event has been dragged/droppped into the calendar.</p>
+<p>At last, the <strong>ExternalEvent</strong> object is used to handle external events by adding draggable feature and the internal event data.</p>
+<p>All functions above must run inside the document ready event to ensure a correct elements detection.</p>
+<h4 id="custom-code">Custom code</h4>
+<p>To add your own code you can follow this instructions: </p>
+<p><strong>Working with css and js</strong></p>
+<ul>
+<li>Create a file app/css/custom.css and add your own styles</li>
+<li>Create a file app/js/custom.js and add your own javascript</li>
+</ul>
+<p>Edit the HTML files and include custom.css after all other css files and custom.js after all other js files.</p>
+<p><strong>Working with source files</strong></p>
+<p>For JS, go to folder master/js/custom and start editing the file custom.js. After compile the source again with Gulp, your own code will included at th bottom of file app/js/app.js.</p>
+<p>For SCSS, go to folder master/scss and create a folder named custom and add your own files. Then edit file app.scss and @import all your stylesheets at the bottom (overrides all app default styles)</p>
+<blockquote>
+<p><strong>A note on updating</strong> The premise is, the less you change the downloaded code, the easier will be to apply any updates. Try always to keep your own code the most separated as possible from the package code to easily apply new updates when necessary.</p>
+</blockquote>
+</div></article><article id="credits"><h2 class="title">Credits</h2><div class="content"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Website / Repository</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@fortawesome/fontawesome-free@5.5.0</td>
+<td><a href="https://github.com/FortAwesome/Font-Awesome">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:animate.css@3.7.0">animate.css@3.7.0</a></td>
+<td><a href="https://github.com/daneden/animate.css">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:bootstrap@4.3.1">bootstrap@4.3.1</a></td>
+<td><a href="https://github.com/twbs/bootstrap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:bootstrap-datepicker@1.8.0">bootstrap-datepicker@1.8.0</a></td>
+<td><a href="https://github.com/uxsolutions/bootstrap-datepicker">Link</a></td>
+</tr>
+<tr>
+<td>bootstrap-filestyle@github:markusslima/bootstrap-filestyle#v2.1.0</td>
+<td><a href="https://github.com/markusslima/bootstrap-filestyle">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:bootstrap-slider@10.2.3">bootstrap-slider@10.2.3</a></td>
+<td><a href="https://github.com/seiyria/bootstrap-slider">Link</a></td>
+</tr>
+<tr>
+<td>bootstrap-tagsinput@bootstrap-tagsinput/bootstrap-tagsinput#0.8.0</td>
+<td><a href="https://github.com/timschlechter/bootstrap-tagsinput">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:bootstrap-wysiwyg@2.0.1">bootstrap-wysiwyg@2.0.1</a></td>
+<td><a href="https://github.com/steveathon/bootstrap-wysiwyg">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:chosen-js@1.8.7">chosen-js@1.8.7</a></td>
+<td><a href="https://github.com/harvesthq/chosen">Link</a></td>
+</tr>
+<tr>
+<td>components-jqueryui@github:components/jqueryui</td>
+<td><a href="https://github.com/components/jqueryui">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net@1.10.19">datatables.net@1.10.19</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-bs@1.10.19">datatables.net-bs@1.10.19</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-Bootstrap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-bs4@1.10.19">datatables.net-bs4@1.10.19</a></td>
+<td><a href="https://www.npmjs.com/package/datatables.net-bs4">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-buttons@1.5.4">datatables.net-buttons@1.5.4</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-Buttons">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-buttons-bs@1.5.4">datatables.net-buttons-bs@1.5.4</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-Buttons-Bootstrap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-keytable@2.5.0">datatables.net-keytable@2.5.0</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-KeyTable">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-keytable-bs@2.5.0">datatables.net-keytable-bs@2.5.0</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-KeyTable-Bootstrap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-responsive@2.2.3">datatables.net-responsive@2.2.3</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-Responsive">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:datatables.net-responsive-bs@2.2.3">datatables.net-responsive-bs@2.2.3</a></td>
+<td><a href="https://github.com/DataTables/Dist-DataTables-Responsive-Bootstrap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:easy-pie-chart@2.1.7">easy-pie-chart@2.1.7</a></td>
+<td><a href="https://github.com/rendro/easy-pie-chart">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:fullcalendar@3.9.0">fullcalendar@3.9.0</a></td>
+<td><a href="https://github.com/fullcalendar/fullcalendar">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:i18next@12.0.0">i18next@12.0.0</a></td>
+<td><a href="https://github.com/i18next/i18next">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:i18next-xhr-backend@1.5.1">i18next-xhr-backend@1.5.1</a></td>
+<td><a href="https://github.com/i18next/i18next-xhr-backend">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:inputmask@4.0.3">inputmask@4.0.3</a></td>
+<td><a href="https://github.com/RobinHerbots/Inputmask">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery@3.4.1">jquery@3.4.1</a></td>
+<td><a href="https://github.com/jquery/jquery">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery-slimscroll@1.3.8">jquery-slimscroll@1.3.8</a></td>
+<td><a href="https://github.com/rochal/jQuery-slimScroll">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery-sparkline@2.4.0">jquery-sparkline@2.4.0</a></td>
+<td><a href="https://github.com/imsky/jquery.sparkline">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery-steps@1.1.0">jquery-steps@1.1.0</a></td>
+<td><a href="https://github.com/rstaib/jquery-steps">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery-ui-touch-punch@0.2.3">jquery-ui-touch-punch@0.2.3</a></td>
+<td><a href="https://github.com/furf/jquery-ui-touch-punch">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jquery-validation@1.18.0">jquery-validation@1.18.0</a></td>
+<td><a href="https://github.com/jquery-validation/jquery-validation">Link</a></td>
+</tr>
+<tr>
+<td>jquery.flot.tooltip@github:krzysu/flot.tooltip</td>
+<td><a href="https://github.com/krzysu/flot.tooltip">Link</a></td>
+</tr>
+<tr>
+<td>jquery.gmap@github:marioestrada/jQuery-gMap</td>
+<td><a href="https://github.com/marioestrada/jQuery-gMap">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:js-storage@1.0.4">js-storage@1.0.4</a></td>
+<td><a href="https://github.com/julien-maurel/js-storage">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:jszip@3.1.5">jszip@3.1.5</a></td>
+<td><a href="https://github.com/Stuk/jszip">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:moment@2.22.2">moment@2.22.2</a></td>
+<td><a href="https://github.com/moment/moment">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:parsleyjs@2.8.1">parsleyjs@2.8.1</a></td>
+<td><a href="https://github.com/guillaumepotier/Parsley.js">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:pdfmake@0.1.56">pdfmake@0.1.56</a></td>
+<td><a href="https://github.com/bpampuch/pdfmake">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:popper.js@1.14.5">popper.js@1.14.5</a></td>
+<td><a href="https://github.com/FezVrasta/popper.js">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:screenfull@3.3.3">screenfull@3.3.3</a></td>
+<td><a href="https://github.com/sindresorhus/screenfull.js">Link</a></td>
+</tr>
+<tr>
+<td>flot</td>
+<td><a href="https://www.npmjs.com/package/flot">Link</a></td>
+</tr>
+<tr>
+<td>flot-spline</td>
+<td><a href="https://www.npmjs.com/package/flot-spline">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:ansi-colors@3.2.1">ansi-colors@3.2.1</a></td>
+<td><a href="https://github.com/doowb/ansi-colors">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:browser-sync@2.26.7">browser-sync@2.26.7</a></td>
+<td><a href="https://github.com/BrowserSync/browser-sync">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:cssnano@4.1.10">cssnano@4.1.10</a></td>
+<td><a href="https://github.com/cssnano/cssnano">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:del@3.0.0">del@3.0.0</a></td>
+<td><a href="https://github.com/sindresorhus/del">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:fancy-log@1.3.2">fancy-log@1.3.2</a></td>
+<td><a href="https://github.com/js-cli/fancy-log">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp@4.0.0">gulp@4.0.0</a></td>
+<td><a href="https://github.com/gulpjs/gulp">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-changed@3.2.0">gulp-changed@3.2.0</a></td>
+<td><a href="https://github.com/sindresorhus/gulp-changed">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-concat@2.6.1">gulp-concat@2.6.1</a></td>
+<td><a href="https://github.com/contra/gulp-concat">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-filter@5.1.0">gulp-filter@5.1.0</a></td>
+<td><a href="https://github.com/sindresorhus/gulp-filter">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-flatten@0.4.0">gulp-flatten@0.4.0</a></td>
+<td><a href="https://github.com/armed/gulp-flatten">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-if@2.0.2">gulp-if@2.0.2</a></td>
+<td><a href="https://github.com/robrich/gulp-if">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-jsbeautifier@3.0.0">gulp-jsbeautifier@3.0.0</a></td>
+<td><a href="https://github.com/tarunc/gulp-jsbeautifier">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-jsvalidate@4.0.0">gulp-jsvalidate@4.0.0</a></td>
+<td><a href="https://github.com/sindresorhus/gulp-jsvalidate">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-load-plugins@1.6.0">gulp-load-plugins@1.6.0</a></td>
+<td><a href="https://github.com/jackfranklin/gulp-load-plugins">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-postcss@8.0.0">gulp-postcss@8.0.0</a></td>
+<td><a href="https://github.com/postcss/gulp-postcss">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-pug@4.0.1">gulp-pug@4.0.1</a></td>
+<td><a href="https://github.com/gulp-community/gulp-pug">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-rename@1.4.0">gulp-rename@1.4.0</a></td>
+<td><a href="https://github.com/hparra/gulp-rename">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-sass@4.0.2">gulp-sass@4.0.2</a></td>
+<td><a href="https://github.com/dlmanning/gulp-sass">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-sourcemaps@2.6.4">gulp-sourcemaps@2.6.4</a></td>
+<td><a href="https://github.com/gulp-sourcemaps/gulp-sourcemaps">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:gulp-uglify@3.0.2">gulp-uglify@3.0.2</a></td>
+<td><a href="https://github.com/terinjokes/gulp-uglify">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:marked@0.7.0">marked@0.7.0</a></td>
+<td><a href="https://github.com/markedjs/marked">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:pify@4.0.1">pify@4.0.1</a></td>
+<td><a href="https://github.com/sindresorhus/pify">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:uglify-save-license@0.4.1">uglify-save-license@0.4.1</a></td>
+<td><a href="https://github.com/shinnn/uglify-save-license">Link</a></td>
+</tr>
+<tr>
+<td><a href="mailto:yargs@12.0.5">yargs@12.0.5</a></td>
+<td><a href="https://github.com/yargs/yargs">Link</a></td>
+</tr>
+</tbody></table>
+</div></article></section></div></div><script src="assets/scripts.js"></script></body></html>
